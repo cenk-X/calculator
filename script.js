@@ -44,6 +44,33 @@ function pushedEqual() {
 
 (cameByOperators)? cameByOperators=false : numbers(numbr);
  
+if(numbr===666) {
+  screen.innerHTML = 'PINCO TIME!';
+  window.open('./eEggs/pincAttack.jpg');
+} 
+
+if(numbr=== 667){
+  screen.innerHTML = 'PINCO TIME 2!';
+  window.open('./eEggs/pincAttack2.jpg');
+}
+
+if(numbr=== 999){
+  screen.innerHTML = 'OLD GLORIA';
+  window.open('./eEggs/old-g.JPG');
+}
+
+if(numbr===998){ 
+  screen.innerHTML ='OLD CENK';
+  window.open('./eEggs/old-c.JPG');
+}
+
+if(numbr===1000){ 
+  screen.innerHTML ='ELF';
+  window.open('./eEggs/elf.jpg');
+}
+
+
+
 }
 
 function pushedDel() {
