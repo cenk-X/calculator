@@ -4,6 +4,7 @@ let firstNumber = 0;
 let secondNumber = 0;
 let operator = "0";
 let screen = document.querySelector(".screen");
+let cameByOperators=false;
 
 function operators(input) {
   numbr = +numberArray.join("");
@@ -11,8 +12,10 @@ function operators(input) {
 
   if (operator != "0") {
     secondNumber = numbr;
+    cameByOperators=true;
     pushedEqual();
     operator = input;
+
     return;
   }
 
@@ -36,8 +39,11 @@ function pushedEqual() {
 
   secondNumber = 0;
   operator = "0";
-  numberArray = [];
-  numbers(numbr);
+  numberArray = [];  
+  firstNumber=numbr;
+
+(cameByOperators)? cameByOperators=false : numbers(numbr);
+ 
 }
 
 function pushedDel() {
@@ -71,7 +77,25 @@ function numbers(input) {
 
 let calcolatore = document.querySelector(".calcolatore");
 calcolatore.addEventListener("click", function (e) {
-  let input = e.target.value;
+  calc(e.target.value);
+
+});
+
+window.addEventListener("keydown", function(e){
+  
+  if (e.key === "Delete" || e.keyCode ===46) pushedDel();
+
+  if (e.key === "Enter" || e.keyCode===13) pushedEqual();
+
+  if (e.key === "Backspace" || e.keyCode===8) delOneDecimal();
+
+
+  else  calc(e.key);
+  console.log(e)
+});
+
+
+function calc(input){
 
   if (input === "+" || input === "-" || input === "*" || input === "/")
     operators(input);
@@ -80,7 +104,7 @@ calcolatore.addEventListener("click", function (e) {
 
   if (input === "=") pushedEqual();
 
-  if (input === "backSpace") delOneDecimal();
+  if (input === "canc") delOneDecimal();
 
   if (
     input === "0" ||
@@ -96,4 +120,5 @@ calcolatore.addEventListener("click", function (e) {
   ) {
     numbers(input);
   }
-});
+  return;
+}
